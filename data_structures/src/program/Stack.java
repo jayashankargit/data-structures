@@ -14,7 +14,7 @@ public class Stack {
 	public void push(int dataCounter) {
 		if(!isFull()) {
 			arr[++top] = dataCounter;
-			System.out.println("Data is pushed in stack"+dataCounter);
+//			System.out.println("Data is pushed in stack"+dataCounter);
 		} else {
 			System.out.println("Stack is full");
 		}
@@ -22,18 +22,19 @@ public class Stack {
 	public void pop() {
 		if(!isEmpty()) {
 			int data = arr[top--];
-			System.out.println("Data is popped from stack"+data);
-//			top--;
+//			System.out.println("Data is popped from stack"+data);
 		} else {
 			System.out.println("Stack is empty");
 		}
 	}
 	
-	public void peek() {
+	public int peek() {
 		if(!isEmpty()) {
-			System.out.println("Data at the top position is:"+arr[top]);
+//			System.out.println("Data at the top position is:"+arr[top]);
+			return arr[top];
 		} else {
 			System.out.println("Stack is empty");
+			return Integer.MIN_VALUE;
 		}
 		
 	}
