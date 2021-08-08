@@ -14,8 +14,8 @@ public class LinkedList {
 	public void add(int data) {
 		Node newNode = new Node(data);
 		if(head == null) {
-			head = newNode;
-			tail = newNode;
+			head = tail = newNode;
+//			tail = newNode;
 		} else {
 			tail.next = newNode;
 			tail = newNode;
@@ -45,6 +45,12 @@ public class LinkedList {
 		} else {
 			newNode.next = prev.next;
 			prev.next = newNode;
+		}
+		if(prev.next == null) {
+			//might bring issue since the new node will be the last node so tail should be the new node
+			tail = prev;
+			
+//			tail = newNode;
 		}
 		size++;
 	}
@@ -161,18 +167,18 @@ public class LinkedList {
 		}
 		return index;
 	}
-	public boolean contains(int data) {
-		Node curr = head;
-		int indexCounter = 0;
-		if(curr == null) {
-			System.out.println("list is empty can't check contains");
+	public boolean isEmpty() {
+		if(head != null) {
 			return false;
 		}
-		while(curr != null && curr.data != data) {
-			curr = curr.next;
-			indexCounter++;
-		}
-		if(indexCounter == size) {
+		return true;
+	}
+	public void clear() {
+		head = tail = null;
+	}
+	public boolean containsOf(int data) {
+		int index = indexOf(data);
+		if(index == -1 || index == Integer.MIN_VALUE) {
 			return false;
 		} else {
 			return true;
@@ -190,25 +196,26 @@ public class LinkedList {
 			stringBuilder.append(curr.data).append(",");
 			curr = curr.next;
 		}
-		if(size > 0) {
+		if(stringBuilder.length() > 1) {
 			stringBuilder.deleteCharAt(stringBuilder.length() - 1);
 		}
 		stringBuilder.append("]");
 		return stringBuilder.toString();
 	}
 
+	private void printTailData() {
+		System.out.println(tail.data);
+	}
 	public static void main(String[] args) {
 		LinkedList linkedList = new LinkedList();
 		linkedList.add(10);
 		linkedList.add(20);
 		linkedList.add(30);
-		linkedList.add(20);
-		linkedList.add(30);
+		linkedList.add(40,0);
+		linkedList.printTailData();
 		System.out.println(linkedList);
-		System.out.println("size is :"+linkedList.size());
-		System.out.println("10 index value is :"+linkedList.indexOf(10));
-		System.out.println("20 index value is :"+linkedList.indexOf(60));
-		System.out.println("20 last index value is :"+linkedList.lastIndexOf(60));
+		linkedList.clear();
+		System.out.println(linkedList);
 //		linkedList.removeObj(50);
 //		System.out.println(linkedList);
 //		System.out.println("size is :"+linkedList.size());

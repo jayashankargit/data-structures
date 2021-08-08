@@ -2,6 +2,10 @@ package program;
 
 import java.util.Arrays;
 
+/**
+ * Advantages over queue is operation, in normal queue on removing a data, all other data should be shifted down.
+ * if we insert new value in queue.
+ */
 public class CircularQueue {
 	int[] arr = null;
 	int capacity = 3;
@@ -23,6 +27,10 @@ public class CircularQueue {
 			System.out.println("Queue is full can't insert the data");
 			return;
 		}
+		/*if(rear == capacity) {
+			rear = 0;
+		}*/
+		//The Above logic can be rewritten as
 		rear = (rear + 1)%capacity;
 		arr[rear] = data;
 		size++;

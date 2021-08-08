@@ -1,5 +1,8 @@
 package program;
 
+/**
+ * concept of first in and first out
+ */
 public class Queue {
 	int[] arr = null;
 	int capacity = 5;

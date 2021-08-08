@@ -76,5 +76,17 @@ public class LinkedList {
 		//removing duplication in list
 		linkedList.removeDuplication();
 		linkedList.display();
+		
+		LinkedList list1 = new LinkedList();
+		LinkedList list2 = new LinkedList();
+		int[] arr1 = {1,2,3};
+		for(int data:arr1) {
+			list1.add(data);
+		}
+		
+		int[] arr2 = {1,2,3,1,1};
+		for(int data:arr2) {
+			list2.add(data);
+		}
 	}
 }
